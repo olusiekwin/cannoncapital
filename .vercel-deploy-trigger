@@ -1,0 +1,6 @@
+# Latest Deployment Trigger
+# This file ensures Vercel deploys the latest commit with the JSX syntax fix
+# Commit: 13712cf - Update: Add version field to vercel.json to trigger fresh deployment
+# Fix commit: 2b0a190 - Fix JSX syntax error in ArticleReviews component
+# Timestamp: 2026-01-01
+
