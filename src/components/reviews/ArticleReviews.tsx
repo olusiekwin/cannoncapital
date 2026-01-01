@@ -330,8 +330,8 @@ export function ArticleReviews({ articleSlug, inline = false }: ArticleReviewsPr
             )}
           </div>
         )}
-    </div>
-  );
+      </div>
+    );
 
   if (inline) {
     return content;
