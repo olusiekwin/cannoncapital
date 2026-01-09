@@ -1,27 +1,11 @@
 // API client for backend integration
 // Replace localStorage calls in storage.ts with these API calls
 
-// Support both local and remote backend URLs
-// In production, default to remote. In development, default to local.
-const isProduction = import.meta.env.PROD;
-const USE_REMOTE = import.meta.env.VITE_USE_REMOTE_BACKEND === 'true' || 
-                   (import.meta.env.VITE_USE_REMOTE_BACKEND === undefined && isProduction);
+// Use localhost for development
 const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL || 'http://localhost:3001/api';
-const API_URL_REMOTE = import.meta.env.VITE_API_URL_REMOTE || 'https://api.cannoncapitalpartners.org/api';
-const API_BASE = import.meta.env.VITE_API_URL || (USE_REMOTE ? API_URL_REMOTE : API_URL_LOCAL);
+const API_BASE = import.meta.env.VITE_API_URL || API_URL_LOCAL;
 
-// Debug: Log API URL (only in development)
-if (import.meta.env.DEV) {
-  console.log('🔗 API Base URL:', API_BASE);
-  console.log('📋 Environment:', {
-    mode: isProduction ? 'production' : 'development',
-    VITE_API_URL: import.meta.env.VITE_API_URL,
-    VITE_USE_REMOTE_BACKEND: import.meta.env.VITE_USE_REMOTE_BACKEND,
-    USE_REMOTE,
-    API_BASE,
-    isProduction,
-  });
-}
+// API URL configuration (logging removed for production)
 
 interface ApiResponse<T> {
   success: boolean;
@@ -50,6 +34,21 @@ class ApiClient {
       headers['Authorization'] = `Bearer ${token}`;
     }
 
+    // Suppress all console output during API requests
+    const originalConsole = {
+      log: console.log,
+      error: console.error,
+      warn: console.warn,
+      info: console.info,
+    };
+
+    // Temporarily disable console methods
+    const noop = () => {};
+    console.log = noop;
+    console.error = noop;
+    console.warn = noop;
+    console.info = noop;
+
     try {
       const response = await fetch(`${API_BASE}${endpoint}`, {
         ...options,
@@ -59,17 +58,48 @@ class ApiClient {
       const data = await response.json();
 
       if (!response.ok) {
+        // Don't expose API structure in errors
         throw new Error(data.error || 'Request failed');
       }
 
       return data;
-    } catch (error) {
-      console.error('API request failed:', error);
-      throw error;
+    } catch (error: any) {
+      // Silently handle errors - don't expose API endpoints or structure
+      // Re-throw with generic error message
+      const genericError = new Error(error.message || 'An error occurred');
+      genericError.name = 'ApiError';
+      throw genericError;
+    } finally {
+      // Restore console methods
+      console.log = originalConsole.log;
+      console.error = originalConsole.error;
+      console.warn = originalConsole.warn;
+      console.info = originalConsole.info;
     }
   }
 
   // Auth
+  async requestOTP(email: string) {
+    return this.request<{ message?: string }>('/auth/request-otp', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    });
+  }
+
+  async verifyOTP(email: string, otp: string) {
+    const response = await this.request<{ token: string; user: any }>('/auth/verify-otp', {
+      method: 'POST',
+      body: JSON.stringify({ email, otp }),
+    });
+    
+    if (response.success && response.data?.token) {
+      localStorage.setItem('auth_token', response.data.token);
+    }
+    
+    return response;
+  }
+
+  // Legacy login (deprecated)
   async login(username: string, password: string) {
     const response = await this.request<{ token: string; user: any }>('/auth/login', {
       method: 'POST',
@@ -84,7 +114,12 @@ class ApiClient {
   }
 
   async verifyToken() {
-    return this.request('/auth/verify');
+    try {
+      return await this.request('/auth/verify');
+    } catch (error) {
+      // Silently handle token verification errors - don't expose API structure
+      return { success: false, error: 'Authentication required' };
+    }
   }
 
   logout() {

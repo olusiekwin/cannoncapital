@@ -775,4 +775,169 @@ export const sendNewsletter = async (email: string, subject: string, content: st
   return sendEmail(email, template.subject, template.html, template.text, false);
 };
 
+// OTP Email Template
+export const sendOTPEmail = async (email: string, otpCode: string, username: string): Promise<boolean> => {
+  const template = {
+    from: `"Cannon Capital Partners" <${newsletterConfig.auth.user}>`,
+    to: email,
+    subject: 'Admin Login OTP - Cannon Capital Partners',
+    html: `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Admin Login OTP</title>
+  <!--[if mso]>
+  <style type="text/css">
+    body, table, td, a { font-family: Arial, sans-serif !important; }
+    .logo-img { max-width: 180px !important; }
+  </style>
+  <![endif]-->
+</head>
+<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f5f5f5; width: 100%;">
+    <tr>
+      <td align="center" style="padding: 0;">
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width: 600px; width: 100%; background-color: #ffffff; margin: 0 auto;">
+          <!-- Header -->
+          <tr>
+            <td style="background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%); padding: 50px 40px 40px 40px; text-align: center;">
+              <img src="${getLogoUrl()}" alt="Cannon Capital Partners" class="logo-img" style="max-width: 180px; height: auto; margin: 0 auto 25px auto; display: block; width: auto;" />
+              <div style="border-top: 2px solid #C80000; width: 60px; margin: 0 auto 20px auto;"></div>
+              <h1 style="margin: 0; color: #ffffff; font-family: 'Sora', 'Inter', Arial, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">
+                CANNON CAPITAL PARTNERS
+              </h1>
+              <p style="margin: 8px 0 0 0; color: #9f9f9f; font-family: 'Inter', Arial, sans-serif; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">
+                Admin Security Verification
+              </p>
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td style="padding: 60px 50px 50px 50px; background-color: #ffffff;">
+              <h2 style="margin: 0 0 25px 0; color: #111111; font-family: 'Sora', 'Inter', Arial, sans-serif; font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -0.5px;">
+                Admin Login OTP
+              </h2>
+              
+              <p style="margin: 0 0 20px 0; color: #333333; font-size: 16px; line-height: 1.7; font-weight: 400;">
+                Hello ${username},
+              </p>
+              
+              <p style="margin: 0 0 30px 0; color: #333333; font-size: 16px; line-height: 1.7;">
+                A login attempt was made to your admin account. Please use the following One-Time Password (OTP) to complete your login:
+              </p>
+              
+              <!-- OTP Box -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 40px 0; background: linear-gradient(135deg, #fff5f5 0%, #fafafa 100%); border-left: 4px solid #C80000; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
+                <tr>
+                  <td style="padding: 40px; text-align: center;">
+                    <p style="margin: 0 0 15px 0; color: #666666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+                      Your One-Time Password
+                    </p>
+                    <div style="background-color: #ffffff; padding: 25px; border-radius: 8px; display: inline-block; border: 2px solid #C80000;">
+                      <p style="margin: 0; color: #C80000; font-size: 42px; font-weight: 700; font-family: 'Courier New', monospace; letter-spacing: 8px;">
+                        ${otpCode}
+                      </p>
+                    </div>
+                    <p style="margin: 20px 0 0 0; color: #666666; font-size: 13px; line-height: 1.6;">
+                      This code will expire in <strong style="color: #111111;">10 minutes</strong>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+              
+              <!-- Security Notice -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 35px 0; background-color: #fafafa; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e5;">
+                <tr>
+                  <td style="padding: 25px 30px;">
+                    <p style="margin: 0 0 12px 0; color: #111111; font-size: 14px; font-weight: 700; font-family: 'Sora', 'Inter', Arial, sans-serif;">
+                      ⚠️ Security Notice
+                    </p>
+                    <p style="margin: 0; color: #666666; font-size: 13px; line-height: 1.7;">
+                      If you did not attempt to log in, please secure your account immediately and contact your system administrator.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+              
+              <!-- Signature -->
+              <div style="margin: 45px 0 0 0; padding-top: 30px; border-top: 1px solid #e5e5e5;">
+                <p style="margin: 0 0 8px 0; color: #333333; font-size: 16px; line-height: 1.75;">
+                  Best regards,
+                </p>
+                <p style="margin: 0; color: #C80000; font-size: 17px; font-weight: 600; font-family: 'Sora', 'Inter', Arial, sans-serif;">
+                  Cannon Capital Partners Security System
+                </p>
+              </div>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #111111; padding: 45px 50px 40px 50px; text-align: center;">
+              <p style="margin: 0 0 12px 0; color: #ffffff; font-size: 14px; font-weight: 600; font-family: 'Sora', 'Inter', Arial, sans-serif;">
+                Canon Capital Partners LLC
+              </p>
+              <p style="margin: 0 0 30px 0; color: #9f9f9f; font-size: 12px; line-height: 1.7;">
+                Professional Financial Advisory Services
+              </p>
+              <div style="border-top: 1px solid #333333; padding-top: 28px; margin-top: 28px;">
+                <p style="margin: 0 0 14px 0; color: #9f9f9f; font-size: 12px; line-height: 1.8;">
+                  <strong style="color: #ffffff; font-weight: 600;">Address:</strong><br>
+                  <span style="display: inline-block; margin-top: 4px;">Delta Corner, Westlands<br>Nairobi, Kenya</span>
+                </p>
+                <p style="margin: 0 0 10px 0;">
+                  <a href="mailto:inquiries@cannoncapitalpartners.org" style="color: #9f9f9f; text-decoration: none; font-size: 12px; transition: color 0.2s ease;">inquiries@cannoncapitalpartners.org</a>
+                </p>
+                <p style="margin: 0;">
+                  <a href="tel:+254730112028" style="color: #9f9f9f; text-decoration: none; font-size: 12px; margin-right: 12px;">+254 730 112 028</a>
+                  <span style="color: #666666; font-size: 12px; margin: 0 8px;">|</span>
+                  <a href="tel:+254730112027" style="color: #9f9f9f; text-decoration: none; font-size: 12px; margin-left: 8px;">+254 730 112 027</a>
+                </p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+    `,
+    text: `
+Admin Login OTP - Cannon Capital Partners
+
+Hello ${username},
+
+A login attempt was made to your admin account. Please use the following One-Time Password (OTP) to complete your login:
+
+Your One-Time Password: ${otpCode}
+
+This code will expire in 10 minutes.
+
+⚠️ Security Notice
+If you did not attempt to log in, please secure your account immediately and contact your system administrator.
+
+Best regards,
+Cannon Capital Partners Security System
+
+---
+Canon Capital Partners LLC
+Professional Financial Advisory Services
+
+Address:
+Delta Corner, Westlands
+Nairobi, Kenya
+
+Email: inquiries@cannoncapitalpartners.org
+Phone: +254 730 112 028 | +254 730 112 027
+    `,
+  };
+
+  return sendEmail(email, template.subject, template.html, template.text, false);
+};
+
 export default { newsletterTransporter, contactTransporter };

@@ -51,10 +51,7 @@ export const query = async (text: string, params?: any[]) => {
   const start = Date.now();
   try {
     const res = await pool.query(text, params);
-    const duration = Date.now() - start;
-    if (process.env.NODE_ENV === 'development') {
-      console.log('Executed query', { text, duration, rows: res.rowCount });
-    }
+    // Query logging removed for cleaner console output
     return res;
   } catch (error) {
     console.error('Database query error:', error);

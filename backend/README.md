@@ -25,6 +25,7 @@ FRONTEND_URL=https://www.cannoncapitalpartners.org
 
 # Authentication
 JWT_SECRET=your-secret-key-change-in-production
+ADMIN_EMAIL=admin@cannoncapitalpartners.org
 
 # Email Configuration
 SMTP_HOST=your-smtp-host.com
@@ -158,11 +159,22 @@ Similar endpoints exist for:
 
 ## 🔐 Authentication
 
-Admin authentication uses JWT tokens:
+Admin authentication uses **Two-Factor Authentication (2FA) with OTP**:
 
-1. Login: `POST /api/auth/login` with `{ username, password }`
-2. Receive token in response
+1. **Request OTP**: `POST /api/auth/request-otp` with `{ username, password }`
+   - Verifies credentials and sends OTP to admin's email
+2. **Verify OTP**: `POST /api/auth/verify-otp` with `{ username, password, otp }`
+   - Verifies OTP and receives JWT token
 3. Include token in subsequent requests: `Authorization: Bearer <token>`
+
+### Security Features:
+- **OTP-based 2FA**: One-time passwords sent via email
+- **Rate Limiting**: Prevents brute force attacks
+  - Login attempts: 5 per 15 minutes per IP
+  - OTP requests: 3 per 5 minutes per IP
+  - OTP verification: 10 per 15 minutes per IP
+- **Account Lockout**: Accounts locked after 5 failed attempts for 30 minutes
+- **OTP Expiration**: OTPs expire after 10 minutes
 
 ## 📊 Database Schema
 
@@ -216,12 +228,21 @@ CORS is configured to allow requests from:
 
 ## 🔒 Security
 
+- **Two-Factor Authentication (2FA)** with OTP via email
 - JWT authentication for admin endpoints
 - Password hashing with bcrypt
+- Rate limiting to prevent brute force attacks
+- Account lockout after failed attempts
 - Input validation with Zod
 - SQL injection protection via parameterized queries
 - CORS enabled for specified origins
 - Environment variables for sensitive data
+
+### Important Security Notes:
+- Set `ADMIN_EMAIL` in your `.env` file to the admin's email address
+- OTPs are sent to the email address configured in the `admin_users` table
+- Failed login attempts are tracked and accounts are automatically locked
+- OTPs expire after 10 minutes for security
 
 ## 🐛 Troubleshooting
 

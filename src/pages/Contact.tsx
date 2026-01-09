@@ -75,15 +75,14 @@ const Contact = () => {
       {/* Contact Form & Info */}
       <section className="section-padding">
         <div className="container-corporate">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 lg:gap-16">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             {/* Form */}
-            <div className="lg:col-span-7 min-w-0">
-              <h2 className="font-heading text-2xl text-foreground mb-8">
+            <div className="lg:col-span-7">
+              <h2 className="font-heading text-2xl lg:text-3xl text-foreground mb-6 lg:mb-8">
                 Schedule a Consultation
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-5 lg:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
                   <div>
                     <label className="block text-xs font-body uppercase tracking-wide text-muted-foreground mb-2">
                       First Name *
@@ -94,7 +93,7 @@ const Contact = () => {
                       value={formData.firstName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-transparent border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200"
+                      className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200 rounded-sm"
                     />
                   </div>
                   <div>
@@ -107,12 +106,12 @@ const Contact = () => {
                       value={formData.lastName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-transparent border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200"
+                      className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200 rounded-sm"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
                   <div>
                     <label className="block text-xs font-body uppercase tracking-wide text-muted-foreground mb-2">
                       Email Address *
@@ -123,7 +122,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-transparent border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200"
+                      className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200 rounded-sm"
                     />
                   </div>
                   <div>
@@ -135,7 +134,7 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-transparent border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200"
+                      className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200 rounded-sm"
                     />
                   </div>
                 </div>
@@ -149,7 +148,7 @@ const Contact = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-transparent border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200"
+                    className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200 rounded-sm"
                   />
                 </div>
 
@@ -162,8 +161,8 @@ const Contact = () => {
                     value={formData.inquiryType}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-transparent border border-border text-foreground focus:border-primary focus:outline-none transition-colors duration-200 appearance-none"
-                    style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
+                    className="w-full px-4 py-3 bg-background border border-border text-foreground focus:border-primary focus:outline-none transition-colors duration-200 appearance-none rounded-sm"
+                    style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em', paddingRight: '2.5rem' }}
                   >
                     <option value="">Select an option</option>
                     <option value="asset-management">Asset Management</option>
@@ -184,19 +183,19 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows={5}
-                    className="w-full px-4 py-3 bg-transparent border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200 resize-none"
+                    rows={6}
+                    className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-200 resize-none rounded-sm"
                     placeholder="Please share any additional context about your inquiry..."
                   />
                 </div>
 
-                <div>
-                  <Button type="submit" variant="hero" className="w-full md:w-auto" disabled={submitting}>
+                <div className="pt-2">
+                  <Button type="submit" variant="hero" className="w-full sm:w-auto min-w-[200px]" disabled={submitting}>
                     {submitting ? "Submitting..." : "Submit Inquiry"}
                   </Button>
                 </div>
 
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-muted-foreground pt-2">
                   By submitting this form, you agree to our privacy policy. 
                   All information is kept strictly confidential.
                 </p>
@@ -204,67 +203,63 @@ const Contact = () => {
             </div>
 
             {/* Contact Info */}
-            <div className="lg:col-span-5 min-w-0">
-              <div className="border border-border p-8 lg:p-10 bg-charcoal mb-8">
-                <h3 className="font-heading text-xl text-foreground mb-6">
+            <div className="lg:col-span-5 space-y-6 lg:space-y-8">
+              <div className="border border-border p-6 lg:p-8 bg-muted/30">
+                <h3 className="font-heading text-xl lg:text-2xl text-foreground mb-5 lg:mb-6">
                   Direct Contact
                 </h3>
-                <div className="space-y-6">
+                <div className="space-y-5">
                   <div>
-                    <span className="text-xs font-body uppercase tracking-wide text-muted-foreground block mb-1">
+                    <span className="text-xs font-body uppercase tracking-wide text-muted-foreground block mb-2">
                       Email
                     </span>
                     <a 
                       href="mailto:inquiries@cannoncapitalpartners.org"
-                      className="text-foreground hover:text-primary transition-colors duration-200 break-words"
+                      className="text-foreground hover:text-primary transition-colors duration-200 break-words text-sm lg:text-base"
                     >
                       inquiries@cannoncapitalpartners.org
                     </a>
                   </div>
                   <div>
-                    <span className="text-xs font-body uppercase tracking-wide text-muted-foreground block mb-1">
+                    <span className="text-xs font-body uppercase tracking-wide text-muted-foreground block mb-2">
                       Phone
                     </span>
-                    <div className="space-y-1">
-                    <a 
+                    <div className="space-y-1.5">
+                      <a 
                         href="tel:+254730112028"
-                        className="block text-foreground hover:text-primary transition-colors duration-200"
-                    >
+                        className="block text-foreground hover:text-primary transition-colors duration-200 text-sm lg:text-base"
+                      >
                         +254 730 112 028
                       </a>
                       <a 
                         href="tel:+254730112027"
-                        className="block text-foreground hover:text-primary transition-colors duration-200"
+                        className="block text-foreground hover:text-primary transition-colors duration-200 text-sm lg:text-base"
                       >
                         +254 730 112 027
-                    </a>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="border border-border p-8 lg:p-10">
-                <h3 className="font-heading text-xl text-foreground mb-6">
+              <div className="border border-border p-6 lg:p-8">
+                <h3 className="font-heading text-xl lg:text-2xl text-foreground mb-5 lg:mb-6">
                   Headquarters
                 </h3>
-                <address className="not-italic text-muted-foreground leading-relaxed">
+                <address className="not-italic text-muted-foreground leading-relaxed text-sm lg:text-base">
                   Canon Capital Partners LLC<br />
                   Delta Corner<br />
                   Westlands, Nairobi, Kenya
                 </address>
               </div>
 
-              <div className="mt-8 p-8 border-l-2 border-primary">
-                <p className="text-sm text-muted-foreground italic">
-                  "Our team responds to all inquiries within one business day. 
-                  For urgent matters, please contact us directly by phone."
+              <div className="p-6 lg:p-8 border-l-4 border-primary bg-primary/5">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Our team responds to all inquiries within one business day. 
+                  For urgent matters, please contact us directly by phone.
                 </p>
               </div>
             </div>
-            </div>
-
-            {/* Sidebar */}
-            <PageSidebar variant="general" showServices={false} />
           </div>
         </div>
       </section>

@@ -67,7 +67,21 @@ async function runMigrations() {
         id VARCHAR(255) PRIMARY KEY,
         username VARCHAR(255) NOT NULL UNIQUE,
         password_hash VARCHAR(255) NOT NULL,
+        email VARCHAR(255),
+        failed_login_attempts INTEGER NOT NULL DEFAULT 0,
+        locked_until TIMESTAMP,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+      );
+
+      -- OTP Codes for Admin Authentication
+      CREATE TABLE IF NOT EXISTS admin_otps (
+        id VARCHAR(255) PRIMARY KEY,
+        admin_id VARCHAR(255) NOT NULL,
+        otp_code VARCHAR(6) NOT NULL,
+        expires_at TIMESTAMP NOT NULL,
+        used BOOLEAN NOT NULL DEFAULT FALSE,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (admin_id) REFERENCES admin_users(id) ON DELETE CASCADE
       );
 
       -- Articles/Insights
@@ -231,7 +245,49 @@ async function runMigrations() {
       CREATE INDEX IF NOT EXISTS idx_careers_department ON careers(department);
       CREATE INDEX IF NOT EXISTS idx_faq_items_category ON faq_items(category);
       CREATE INDEX IF NOT EXISTS idx_faq_items_published ON faq_items(published);
+      CREATE INDEX IF NOT EXISTS idx_admin_otps_admin_id ON admin_otps(admin_id);
+      CREATE INDEX IF NOT EXISTS idx_admin_otps_expires_at ON admin_otps(expires_at);
     `);
+
+    // Add email column to admin_users if it doesn't exist (for existing databases)
+    try {
+      await query(`
+        DO $$ 
+        BEGIN
+          IF NOT EXISTS (
+            SELECT 1 FROM information_schema.columns 
+            WHERE table_name = 'admin_users' AND column_name = 'email'
+          ) THEN
+            ALTER TABLE admin_users ADD COLUMN email VARCHAR(255);
+          END IF;
+        END $$;
+      `);
+    } catch (error) {
+      console.warn('Could not add email column (may already exist):', error);
+    }
+
+    // Add failed_login_attempts and locked_until columns if they don't exist
+    try {
+      await query(`
+        DO $$ 
+        BEGIN
+          IF NOT EXISTS (
+            SELECT 1 FROM information_schema.columns 
+            WHERE table_name = 'admin_users' AND column_name = 'failed_login_attempts'
+          ) THEN
+            ALTER TABLE admin_users ADD COLUMN failed_login_attempts INTEGER NOT NULL DEFAULT 0;
+          END IF;
+          IF NOT EXISTS (
+            SELECT 1 FROM information_schema.columns 
+            WHERE table_name = 'admin_users' AND column_name = 'locked_until'
+          ) THEN
+            ALTER TABLE admin_users ADD COLUMN locked_until TIMESTAMP;
+          END IF;
+        END $$;
+      `);
+    } catch (error) {
+      console.warn('Could not add security columns (may already exist):', error);
+    }
 
     // Create default admin user if it doesn't exist
     const defaultAdminUsername = 'admin';
@@ -245,17 +301,31 @@ async function runMigrations() {
     if (existingAdminResult.rows.length === 0) {
       const passwordHash = bcrypt.hashSync(defaultAdminPassword, 10);
       const adminId = `admin_${Date.now()}`;
+      const adminEmail = process.env.ADMIN_EMAIL || 'admin@cannoncapitalpartners.org';
 
       await query(
-        `INSERT INTO admin_users (id, username, password_hash)
-         VALUES ($1, $2, $3)`,
-        [adminId, defaultAdminUsername, passwordHash]
+        `INSERT INTO admin_users (id, username, password_hash, email)
+         VALUES ($1, $2, $3, $4)`,
+        [adminId, defaultAdminUsername, passwordHash, adminEmail]
       );
 
       console.log(`\n✅ Default admin user created:`);
       console.log(`   Username: ${defaultAdminUsername}`);
+      console.log(`   Email: ${adminEmail}`);
       console.log(`   Password: ${defaultAdminPassword}`);
-      console.log(`   ⚠️  Please change this password in production!\n`);
+      console.log(`   ⚠️  Please change this password in production!`);
+      console.log(`   ⚠️  Make sure ADMIN_EMAIL is set in your .env file!\n`);
+    } else {
+      // Update existing admin user with email if not set or different
+      const existingAdmin = existingAdminResult.rows[0];
+      const adminEmail = process.env.ADMIN_EMAIL || 'admin@cannoncapitalpartners.org';
+      if (!existingAdmin.email || existingAdmin.email !== adminEmail) {
+        await query(
+          `UPDATE admin_users SET email = $1 WHERE id = $2`,
+          [adminEmail, existingAdmin.id]
+        );
+        console.log(`\n✅ Updated existing admin user with email: ${adminEmail}\n`);
+      }
     }
 
     console.log('✅ Database migrations completed!');

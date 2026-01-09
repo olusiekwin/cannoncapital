@@ -85,10 +85,13 @@ const Admin = () => {
   const checkAuth = async () => {
     try {
       const response = await api.verifyToken();
-      if (response.success) {
+      if (response?.success) {
         setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
       }
     } catch {
+      // Silently handle auth errors - don't expose API structure
       setIsAuthenticated(false);
     }
   };
