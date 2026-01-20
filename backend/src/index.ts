@@ -114,6 +114,11 @@ const init = async () => {
       console.log(`📡 API endpoints available at http://localhost:${PORT}/api`);
       console.log(`🌐 Frontend URL: ${FRONTEND_URL}`);
       console.log(`🗄️  Database: PostgreSQL\n`);
+      // Periodically ping the health check endpoint every 24 hours (86400000ms)
+      setInterval(() => {
+        require('https').get('https://your-backend-url/health');  // Replace with your actual health check URL
+        console.log('Pinged server to keep it awake');
+      }, 86400000);  // 24 hours in milliseconds
     });
   } catch (error) {
     console.error('Failed to start server:', error);
