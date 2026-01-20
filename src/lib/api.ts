@@ -7,7 +7,7 @@ const isProduction = import.meta.env.PROD;
 const USE_REMOTE = import.meta.env.VITE_USE_REMOTE_BACKEND === 'true' || 
                    (import.meta.env.VITE_USE_REMOTE_BACKEND === undefined && isProduction);
 const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL || 'http://localhost:3001/api';
-const API_URL_REMOTE = import.meta.env.VITE_API_URL_REMOTE || 'https://api.cannoncapitalpartners.org/api';
+const API_URL_REMOTE = import.meta.env.VITE_API_URL_REMOTE || 'https://cannoncapital.onrender.com/api';
 const API_BASE = import.meta.env.VITE_API_URL || (USE_REMOTE ? API_URL_REMOTE : API_URL_LOCAL);
 
 // API URL configuration (logging removed for production)
