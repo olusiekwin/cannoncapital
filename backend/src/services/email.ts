@@ -6,7 +6,7 @@ dotenv.config();
 // Email configuration - Newsletter uses noreply, Contact uses inquiries
 const newsletterConfig = {
   host: process.env.SMTP_HOST || 'server215.web-hosting.com',
-  port: parseInt(process.env.SMTP_PORT || '465'),
+  port: parseInt(process.env.SMTP_PORT || '587'),
   secure: true,
   auth: {
     user: process.env.SMTP_USER_NEWSLETTER || 'noreply@cannoncapitalpartners.org',
@@ -16,7 +16,7 @@ const newsletterConfig = {
 
 const contactConfig = {
   host: process.env.SMTP_HOST || 'server215.web-hosting.com',
-  port: parseInt(process.env.SMTP_PORT || '465'),
+  port: parseInt(process.env.SMTP_PORT || '587'),
   secure: true,
   auth: {
     user: process.env.SMTP_USER_CONTACT || 'inquiries@cannoncapitalpartners.org',
