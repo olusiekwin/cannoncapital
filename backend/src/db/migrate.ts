@@ -152,6 +152,7 @@ async function runMigrations() {
         role VARCHAR(255) NOT NULL,
         bio TEXT NOT NULL,
         image TEXT,
+        email VARCHAR(255),
         order_index INTEGER DEFAULT 0,
         published BOOLEAN NOT NULL DEFAULT TRUE,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -287,6 +288,23 @@ async function runMigrations() {
       `);
     } catch (error) {
       console.warn('Could not add security columns (may already exist):', error);
+    }
+
+    // Add email column to staff table if it doesn't exist (for existing databases)
+    try {
+      await query(`
+        DO $$ 
+        BEGIN
+          IF NOT EXISTS (
+            SELECT 1 FROM information_schema.columns 
+            WHERE table_name = 'staff' AND column_name = 'email'
+          ) THEN
+            ALTER TABLE staff ADD COLUMN email VARCHAR(255);
+          END IF;
+        END $$;
+      `);
+    } catch (error) {
+      console.warn('Could not add email column to staff (may already exist):', error);
     }
 
     // Create default admin user if it doesn't exist
