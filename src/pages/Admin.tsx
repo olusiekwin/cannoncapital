@@ -14,6 +14,8 @@ import { NewsletterForm } from "@/components/admin/NewsletterForm";
 import { ImpactForm } from "@/components/admin/ImpactForm";
 import { api } from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
+import { SeoManager } from "@/components/common/SeoManager";
+import { getSeoForPath } from "@/lib/seo";
 import { 
   Plus, 
   Edit, 
@@ -243,8 +245,15 @@ const Admin = () => {
     });
   };
 
+  const adminSeo = getSeoForPath("/admin");
+
   if (!isAuthenticated) {
-    return <AdminLogin onLoginSuccess={() => setIsAuthenticated(true)} />;
+    return (
+      <>
+        <SeoManager config={adminSeo} />
+        <AdminLogin onLoginSuccess={() => setIsAuthenticated(true)} />
+      </>
+    );
   }
 
   const tabs = [
@@ -291,6 +300,8 @@ const Admin = () => {
   }
 
   return (
+    <>
+      <SeoManager config={adminSeo} />
       <div className="min-h-screen bg-muted/30">
       {/* Admin Header */}
       <header className="bg-white border-b border-border sticky top-0 z-50">
@@ -687,6 +698,7 @@ const Admin = () => {
         </main>
       </div>
     </div>
+    </>
   );
 };
 

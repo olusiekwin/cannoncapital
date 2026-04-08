@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ArrowLeft, Check } from "lucide-react";
 import { api } from "@/lib/api";
+import { SeoConfig, truncateForMetaDescription } from "@/lib/seo";
 import { PageSidebar } from "@/components/services/ServicesSidebar";
 
 const ServiceDetail = () => {
@@ -31,6 +32,16 @@ const ServiceDetail = () => {
     }
   };
 
+  const seo = useMemo((): Partial<SeoConfig> | undefined => {
+    if (!service) return undefined;
+    return {
+      title: service.title,
+      description: truncateForMetaDescription(service.description || service.overview || service.title),
+      image: service.heroImage,
+      robots: service.published === false ? "noindex,nofollow" : "index,follow",
+    };
+  }, [service]);
+
   if (loading) {
     return (
       <Layout>
@@ -45,8 +56,12 @@ const ServiceDetail = () => {
     return <Navigate to="/services" replace />;
   }
 
+  if (service.published === false) {
+    return <Navigate to="/services" replace />;
+  }
+
   return (
-    <Layout>
+    <Layout seo={seo}>
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-end overflow-hidden">
         <div className="absolute inset-0 z-0">

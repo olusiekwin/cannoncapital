@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { api } from "@/lib/api";
+import { landingImagery } from "@/lib/landingImagery";
 
 export function InsightsPreview() {
   const [articles, setArticles] = useState<any[]>([]);
@@ -69,6 +70,18 @@ export function InsightsPreview() {
           <div className="mx-auto h-[1px] w-12 bg-foreground" />
         </div>
 
+        <div className="relative mb-10 sm:mb-12 max-h-48 sm:max-h-56 overflow-hidden border border-border">
+          <img
+            src={landingImagery.insightsBand.src}
+            alt={landingImagery.insightsBand.alt}
+            width={2400}
+            height={800}
+            loading="lazy"
+            className="h-full w-full min-h-[11rem] object-cover object-center"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 to-background/10" />
+        </div>
+
         <div className="relative">
           {/* Carousel arrows */}
           <button
@@ -88,7 +101,7 @@ export function InsightsPreview() {
 
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-8">
-              {articles.map((article, idx) => {
+              {articles.map((article) => {
                 const dateInfo = formatDate(article.date);
                 return (
                   <article key={article.id} className="flex-[0_0_100%] lg:flex-[0_0_calc(33.333%-1.33rem)] border border-border bg-white">
@@ -103,14 +116,6 @@ export function InsightsPreview() {
                         <div className="text-2xl font-heading leading-none">{dateInfo.day}</div>
                         <div className="text-xs uppercase mt-1">{dateInfo.month}</div>
                       </div>
-                      {/* Video play button for middle card */}
-                      {idx === 1 && (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-16 h-16 border-2 border-white bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                            <div className="w-0 h-0 border-l-[12px] border-l-white border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1" />
-                          </div>
-                        </div>
-                      )}
                     </div>
 
                     {/* Black author bar */}

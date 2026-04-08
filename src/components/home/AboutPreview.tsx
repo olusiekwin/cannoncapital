@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { Link } from "react-router-dom";
+import { landingImagery } from "@/lib/landingImagery";
 
 
 export function AboutPreview() {
@@ -11,8 +12,11 @@ export function AboutPreview() {
           <div className="relative">
             <div className="aspect-[4/3] overflow-hidden border border-border">
               <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
-                alt="Canon Capital Partners LLC financial advisory team"
+                src={landingImagery.about.src}
+                alt={landingImagery.about.alt}
+                width={2000}
+                height={1500}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>

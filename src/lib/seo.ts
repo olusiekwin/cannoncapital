@@ -5,11 +5,21 @@ export interface SeoConfig {
   image?: string;
   type?: "website" | "article";
   robots?: string;
+  /** ISO 8601 when available (structured data) */
+  datePublished?: string;
+  authorName?: string;
 }
+
+/** Trim plain text for meta descriptions (no HTML). */
+export const truncateForMetaDescription = (text: string, maxLen = 160): string => {
+  const single = text.replace(/\s+/g, " ").trim();
+  if (single.length <= maxLen) return single;
+  return `${single.slice(0, maxLen - 1).trimEnd()}…`;
+};
 
 const SITE_NAME = "CannonCapital";
 const BASE_URL = "https://cannoncapitalpartners.org";
-const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop";
+const DEFAULT_IMAGE = `${BASE_URL}/og-image.svg`;
 
 const defaultConfig: SeoConfig = {
   title: "Strategic Financial Advisory",
@@ -23,9 +33,9 @@ const defaultConfig: SeoConfig = {
 
 const pageConfigs: Record<string, Partial<SeoConfig>> = {
   "/": {
-    title: "Strategic Financial Advisory",
+    title: "Project Finance & Strategic Advisory",
     description:
-      "Financial clarity, strategic protection, and confident growth across wealth, assets, and structured finance.",
+      "Connect projects with strategic capital: project finance, structured finance, development finance, and capital mobilization—plus institutional advisory, wealth protection, and ESG-aligned financing from CannonCapital.",
   },
   "/services": {
     title: "Financial Advisory Services",
@@ -63,9 +73,14 @@ const pageConfigs: Record<string, Partial<SeoConfig>> = {
       "Join CannonCapital and help build high-impact financial advisory solutions for institutional clients.",
   },
   "/impact": {
-    title: "Impact",
+    title: "Impact & Impact Stories",
     description:
-      "See how CannonCapital drives measurable economic and social impact through strategic advisory work.",
+      "Explore CannonCapital impact stories across housing, clean energy, community infrastructure, and ESG—measurable outcomes from strategic advisory and development finance.",
+  },
+  "/donate": {
+    title: "Support Our Mission",
+    description:
+      "Learn how to partner with CannonCapital through philanthropic giving and mission-aligned donations that amplify sustainable finance and community impact.",
   },
   "/privacy": {
     title: "Privacy Policy",
@@ -118,6 +133,15 @@ const dynamicRoutePatterns: Array<{
         "Explore this CannonCapital project case study, including strategy, delivery, and outcomes.",
     },
   },
+  {
+    regex: /^\/impact\/[^/]+$/,
+    config: {
+      title: "Impact Story",
+      description:
+        "Read a CannonCapital impact story: outcomes, metrics, and community transformation through strategic finance.",
+      type: "article",
+    },
+  },
 ];
 
 export const getBaseUrl = (): string => BASE_URL;
@@ -128,6 +152,17 @@ export const buildAbsoluteUrl = (path: string): string => {
 
 export const getSeoForPath = (pathname: string): SeoConfig => {
   const normalizedPath = pathname || "/";
+
+  if (normalizedPath === "/admin" || normalizedPath.startsWith("/admin/")) {
+    return {
+      ...defaultConfig,
+      title: "Admin",
+      description: "Internal administration for CannonCapital.",
+      path: normalizedPath,
+      robots: "noindex,nofollow",
+    };
+  }
+
   const staticConfig = pageConfigs[normalizedPath];
 
   if (staticConfig) {

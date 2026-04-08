@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ArrowLeft, Calendar, User, Clock, Share2, Heart, Eye } from "lucide-react";
 import { ArticleReviews } from "@/components/reviews/ArticleReviews";
 import { api } from "@/lib/api";
+import { SeoConfig, truncateForMetaDescription } from "@/lib/seo";
 import { useToast } from "@/hooks/use-toast";
 import { PageSidebar } from "@/components/services/ServicesSidebar";
 
@@ -126,6 +127,29 @@ const ArticleDetail = () => {
     }
   };
 
+  const seo = useMemo((): Partial<SeoConfig> | undefined => {
+    if (!article) return undefined;
+    const rawDesc =
+      article.excerpt ||
+      (Array.isArray(article.content) && article.content[0]
+        ? String(article.content[0])
+        : article.title);
+    let datePublished: string | undefined;
+    const parsed = Date.parse(article.date);
+    if (!Number.isNaN(parsed)) {
+      datePublished = new Date(parsed).toISOString();
+    }
+    return {
+      title: article.title,
+      description: truncateForMetaDescription(rawDesc),
+      image: article.heroImage,
+      type: "article",
+      authorName: article.author,
+      datePublished,
+      robots: article.published === false ? "noindex,nofollow" : "index,follow",
+    };
+  }, [article]);
+
   if (loading) {
     return (
       <Layout>
@@ -140,8 +164,12 @@ const ArticleDetail = () => {
     return <Navigate to="/insights" replace />;
   }
 
+  if (article.published === false) {
+    return <Navigate to="/insights" replace />;
+  }
+
   return (
-    <Layout>
+    <Layout seo={seo}>
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0 z-0">

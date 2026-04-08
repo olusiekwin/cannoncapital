@@ -15,6 +15,8 @@ import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Careers from "./pages/Careers";
 import Impact from "./pages/Impact";
+import ImpactStoryDetail from "./pages/ImpactStoryDetail";
+import Donate from "./pages/Donate";
 import Admin from "./pages/Admin";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
@@ -48,6 +50,8 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/impact" element={<Impact />} />
+          <Route path="/impact/:id" element={<ImpactStoryDetail />} />
+          <Route path="/donate" element={<Donate />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />

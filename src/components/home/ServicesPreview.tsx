@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Building2, Layers, TrendingUp, DollarSign, Briefcase } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { api } from "@/lib/api";
+import { landingImagery } from "@/lib/landingImagery";
 
 // Icon mapping for services
 const iconMap: Record<string, any> = {
@@ -74,11 +75,23 @@ export function ServicesPreview() {
           </div>
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-white text-sm font-body uppercase tracking-[0.15em] hover:bg-foreground/90 transition-all duration-300 group"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-white text-sm font-body uppercase tracking-[0.15em] hover:bg-foreground/90 transition-all duration-300 group shrink-0"
           >
             View All Services
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </Link>
+        </div>
+
+        <div className="relative mb-10 sm:mb-12 max-h-52 sm:max-h-64 md:max-h-72 overflow-hidden border border-border bg-muted/20">
+          <img
+            src={landingImagery.servicesBand.src}
+            alt={landingImagery.servicesBand.alt}
+            width={2400}
+            height={900}
+            loading="lazy"
+            className="h-full w-full min-h-[13rem] object-cover object-center sm:min-h-[16rem]"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/90 via-background/20 to-transparent" />
         </div>
 
         <div className="relative">

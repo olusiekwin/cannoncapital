@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { api } from "@/lib/api";
+import { landingImagery } from "@/lib/landingImagery";
 
 export function ProjectsPreview() {
   const [projects, setProjects] = useState<any[]>([]);
@@ -68,11 +69,13 @@ export function ProjectsPreview() {
     <section className="relative">
       {/* Header Section - Image Background */}
       <div className="relative text-white py-12 sm:py-16 md:py-20">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1800&auto=format&fit=crop')`,
-          }}
+        <img
+          src={landingImagery.projectsBand.src}
+          alt=""
+          width={2400}
+          height={1600}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/85" />
@@ -174,7 +177,7 @@ export function ProjectsPreview() {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-700 ease-in-out"
             style={{
-              backgroundImage: `url(${featuredProject?.heroImage || 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1800&auto=format&fit=crop'})`,
+              backgroundImage: `url(${featuredProject?.heroImage || landingImagery.projectsBand.src})`,
             }}
           >
             {/* Dark overlay for text readability */}

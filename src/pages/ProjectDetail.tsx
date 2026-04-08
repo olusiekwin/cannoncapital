@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ArrowLeft, Check } from "lucide-react";
 import { api } from "@/lib/api";
+import { SeoConfig, truncateForMetaDescription } from "@/lib/seo";
 import { PageSidebar } from "@/components/services/ServicesSidebar";
 
 const ProjectDetail = () => {
@@ -31,6 +32,16 @@ const ProjectDetail = () => {
     }
   };
 
+  const seo = useMemo((): Partial<SeoConfig> | undefined => {
+    if (!project) return undefined;
+    return {
+      title: project.title,
+      description: truncateForMetaDescription(project.description || project.title),
+      image: project.heroImage,
+      robots: project.published === false ? "noindex,nofollow" : "index,follow",
+    };
+  }, [project]);
+
   if (loading) {
     return (
       <Layout>
@@ -45,8 +56,12 @@ const ProjectDetail = () => {
     return <Navigate to="/projects" replace />;
   }
 
+  if (project.published === false) {
+    return <Navigate to="/projects" replace />;
+  }
+
   return (
-    <Layout>
+    <Layout seo={seo}>
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-end overflow-hidden">
         <div className="absolute inset-0 z-0">

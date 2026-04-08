@@ -1,3 +1,5 @@
+import { landingImagery } from "@/lib/landingImagery";
+
 const stats = [
   { value: "$4.2B+", label: "Assets Under Advisory" },
   { value: "5+", label: "Years of Excellence" },
@@ -7,8 +9,19 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="border-t border-b border-gray-800 bg-[#111111]">
-      <div className="container-corporate">
+    <section className="relative overflow-hidden border-t border-b border-gray-800 bg-[#111111]">
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <img
+          src={landingImagery.statsBackdrop.src}
+          alt=""
+          width={2400}
+          height={1600}
+          loading="lazy"
+          className="h-full w-full object-cover opacity-25"
+        />
+        <div className="absolute inset-0 bg-[#111111]/92" />
+      </div>
+      <div className="container-corporate relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div

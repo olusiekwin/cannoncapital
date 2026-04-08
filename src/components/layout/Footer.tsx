@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const additionalLinks = [
   { name: "Impact Stories", href: "/impact" },
+  { name: "Donate", href: "/donate" },
   { name: "Vision & Mission", href: "/about#vision" },
   { name: "Careers", href: "/careers" },
   { name: "FAQ", href: "/faq" },

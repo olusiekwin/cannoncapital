@@ -1,6 +1,7 @@
-import { CheckCircle, MapPin, Phone, Clock, ArrowRight } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { landingImagery } from "@/lib/landingImagery";
 
 const assurances = [
   "Global Investor Network Access",
@@ -9,22 +10,17 @@ const assurances = [
   "ESG-Aligned Financing Strategies",
 ];
 
+const ctaSlides = landingImagery.ctaSlides;
+
 export function CTASection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  const images = [
-    "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=1800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1800&auto=format&fit=crop",
-  ];
 
-  // Auto-rotate images
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+      setCurrentImageIndex((prev) => (prev + 1) % ctaSlides.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, []);
 
   return (
     <section className="relative bg-white mb-12 lg:mb-16">
@@ -32,12 +28,15 @@ export function CTASection() {
         {/* Left - Animated Image */}
         <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[500px] overflow-hidden">
           <div className="absolute inset-0">
-            {images.map((img, idx) => (
+            {ctaSlides.map((slide, idx) => (
               <img
-                key={idx}
-                src={img}
-                alt="Financial advisory and project finance consultation"
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                key={slide.src}
+                src={slide.src}
+                alt={slide.alt}
+                width={2000}
+                height={1333}
+                loading={idx === 0 ? "eager" : "lazy"}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${
                   idx === currentImageIndex ? "opacity-100" : "opacity-0"
                 }`}
               />
@@ -45,7 +44,7 @@ export function CTASection() {
           </div>
           {/* Carousel indicator dots */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
-            {images.map((_, idx) => (
+            {ctaSlides.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentImageIndex(idx)}

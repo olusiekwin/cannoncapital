@@ -239,11 +239,16 @@ const Impact = () => {
             <p className="text-muted-foreground text-lg leading-relaxed">
               Let's work together to create meaningful change through strategic finance and sustainable development.
             </p>
-            <div className="pt-4">
+            <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
                 <Button variant="hero" className="group">
                   Discuss Your Impact Project
                   <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Button>
+              </Link>
+              <Link to="/donate">
+                <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                  Support our mission
                 </Button>
               </Link>
             </div>

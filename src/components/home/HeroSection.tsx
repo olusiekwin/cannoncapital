@@ -1,19 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { landingImagery } from "@/lib/landingImagery";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center overflow-hidden py-12 sm:py-16 lg:py-20">
-      {/* Background with overlay - Dark background with transparency */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=2070&auto=format&fit=crop')`,
-          }}
+        <img
+          src={landingImagery.hero.src}
+          alt={landingImagery.hero.alt}
+          width={2400}
+          height={1600}
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        {/* Light overlay for readability */}
-        <div className="absolute inset-0 bg-white/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/55 to-white/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent" />
       </div>
 
       {/* Content */}
@@ -35,7 +38,6 @@ export function HeroSection() {
             <br />
             <span className="text-primary">Driving Growth.</span>
           </h1>
-
           {/* Subheading */}
           <p className="font-body text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mb-8 sm:mb-10 md:mb-12 leading-relaxed opacity-0 animate-fade-up animation-delay-200">
             A multidisciplinary financial advisory firm specializing in project finance, structured finance, 
