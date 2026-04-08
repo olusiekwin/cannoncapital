@@ -37,6 +37,7 @@ const App = () => (
           v7_relativeSplatPath: true,
         }}
       >
+        {/* Public routes: keep in sync with scripts/indexable-static-paths.mjs + scripts/generate-sitemap.mjs */}
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />

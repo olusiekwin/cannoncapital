@@ -8,6 +8,7 @@
 import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { INDEXABLE_STATIC_ROUTES } from "./indexable-static-paths.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = join(__dirname, "..", "public", "sitemap.xml");
@@ -45,22 +46,16 @@ function urlEntry(href, opts = {}) {
   return body;
 }
 
-const STATIC_PAGES = [
-  { path: "/", changefreq: "weekly", priority: "1.0" },
-  { path: "/about", changefreq: "monthly", priority: "0.9" },
-  { path: "/services", changefreq: "weekly", priority: "0.9" },
-  { path: "/projects", changefreq: "weekly", priority: "0.9" },
-  { path: "/insights", changefreq: "weekly", priority: "0.9" },
-  { path: "/impact", changefreq: "weekly", priority: "0.9" },
-  { path: "/donate", changefreq: "monthly", priority: "0.85" },
-  { path: "/contact", changefreq: "monthly", priority: "0.85" },
-  { path: "/careers", changefreq: "weekly", priority: "0.8" },
-  { path: "/faq", changefreq: "monthly", priority: "0.7" },
-  { path: "/privacy", changefreq: "yearly", priority: "0.4" },
-  { path: "/terms", changefreq: "yearly", priority: "0.4" },
-  { path: "/compliance", changefreq: "yearly", priority: "0.4" },
-  { path: "/fraud-prevention", changefreq: "yearly", priority: "0.4" },
-];
+/** Merge arrays; later items skip if same key already seen. */
+function mergeByKey(items, keyFn) {
+  const map = new Map();
+  for (const item of items) {
+    const k = keyFn(item);
+    if (!k || map.has(k)) continue;
+    map.set(k, item);
+  }
+  return [...map.values()];
+}
 
 async function fetchList(endpoint) {
   const res = await fetch(`${API}${endpoint}`, {
@@ -72,6 +67,21 @@ async function fetchList(endpoint) {
   return json.data;
 }
 
+/** Try primary endpoint, then fallback (e.g. /published vs default published filter). */
+async function fetchListWithFallback(primary, fallback) {
+  try {
+    const rows = await fetchList(primary);
+    if (rows.length > 0) return rows;
+  } catch {
+    /* try fallback */
+  }
+  try {
+    return await fetchList(fallback);
+  } catch {
+    return [];
+  }
+}
+
 async function loadDynamicUrls() {
   if (SKIP) {
     console.warn("Sitemap: SKIP_SITEMAP_FETCH=1 — dynamic URLs omitted.");
@@ -79,15 +89,15 @@ async function loadDynamicUrls() {
   }
 
   const [articles, services, projects, impact] = await Promise.all([
-    fetchList("/articles/published").catch(() => []),
-    fetchList("/services/published").catch(() => []),
+    fetchListWithFallback("/articles/published", "/articles"),
+    fetchListWithFallback("/services/published", "/services"),
     fetchList("/projects").catch(() => []),
-    fetchList("/impact/published").catch(() => []),
+    fetchListWithFallback("/impact/published", "/impact"),
   ]);
 
   const rows = [];
 
-  for (const a of articles) {
+  for (const a of mergeByKey([...articles], (x) => x?.slug)) {
     if (a?.published === false || !a?.slug) continue;
     rows.push({
       href: loc(`/insights/${encodeURIComponent(a.slug)}`),
@@ -97,7 +107,7 @@ async function loadDynamicUrls() {
     });
   }
 
-  for (const s of services) {
+  for (const s of mergeByKey([...services], (x) => x?.slug)) {
     if (s?.published === false || !s?.slug) continue;
     rows.push({
       href: loc(`/services/${encodeURIComponent(s.slug)}`),
@@ -107,7 +117,7 @@ async function loadDynamicUrls() {
     });
   }
 
-  for (const p of projects) {
+  for (const p of mergeByKey([...projects], (x) => x?.id)) {
     if (p?.published === false || !p?.id) continue;
     rows.push({
       href: loc(`/projects/${encodeURIComponent(p.id)}`),
@@ -117,7 +127,7 @@ async function loadDynamicUrls() {
     });
   }
 
-  for (const story of impact) {
+  for (const story of mergeByKey([...impact], (x) => x?.id)) {
     if (story?.published === false || !story?.id) continue;
     rows.push({
       href: loc(`/impact/${encodeURIComponent(story.id)}`),
@@ -147,7 +157,7 @@ async function main() {
   const lines = ['<?xml version="1.0" encoding="UTF-8"?>\n'];
   lines.push('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n');
 
-  for (const p of STATIC_PAGES) {
+  for (const p of INDEXABLE_STATIC_ROUTES) {
     const href = loc(p.path);
     if (seen.has(href)) continue;
     seen.add(href);
