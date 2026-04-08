@@ -19,20 +19,72 @@
     <meta property="og:description" content="Connecting projects, mobilizing capital, and driving growth—project finance, structured finance, development finance, and institutional advisory from CannonCapital." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content="https://cannoncapitalpartners.org/og-image.svg" />
+    <meta property="og:image" content="https://cannoncapitalpartners.org/og-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="CannonCapital — project finance and strategic advisory" />
     <meta property="og:url" content="https://cannoncapitalpartners.org/" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@CannonCapital" />
-    <meta name="twitter:image" content="https://cannoncapitalpartners.org/og-image.svg" />
+    <meta name="twitter:image" content="https://cannoncapitalpartners.org/og-share.jpg" />
     <meta name="twitter:image:alt" content="CannonCapital — project finance and strategic advisory" />
 
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link rel="apple-touch-icon" href="/logo.svg" />
+
+    <script type="application/ld+json" id="seo-organization-website">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://cannoncapitalpartners.org/#organization",
+            "name": "CannonCapital",
+            "legalName": "Canon Capital Partners LLC",
+            "alternateName": ["Canon Capital Partners LLC", "Cannon Capital"],
+            "url": "https://cannoncapitalpartners.org/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://cannoncapitalpartners.org/logo.svg"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cannoncapitalpartners.org/#website",
+            "name": "CannonCapital",
+            "url": "https://cannoncapitalpartners.org/",
+            "description": "Connect projects with strategic capital: project finance, structured finance, development finance, and capital mobilization—plus institutional advisory, wealth protection, and ESG-aligned financing from CannonCapital.",
+            "inLanguage": "en-US",
+            "publisher": { "@id": "https://cannoncapitalpartners.org/#organization" }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
+    <noscript>
+      <div style="max-width: 42rem; margin: 2rem auto; padding: 0 1.5rem; font-family: system-ui, 'Segoe UI', sans-serif; line-height: 1.6; color: #111">
+        <p style="font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: #555">CannonCapital</p>
+        <h1 style="font-size: 1.65rem; margin: 0.35rem 0 1rem; font-weight: 600">Project finance &amp; strategic advisory</h1>
+        <p style="color: #333">
+          CannonCapital connects sponsors with strategic capital: project finance, structured finance, development finance, and capital mobilization—plus institutional advisory, wealth protection, and ESG-aligned financing.
+        </p>
+        <nav aria-label="Main pages" style="margin-top: 1.5rem">
+          <p style="font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem">Explore</p>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem">
+            <li><a href="/services">Services</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/insights">Insights</a></li>
+            <li><a href="/impact">Impact</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/donate">Donate</a></li>
+          </ul>
+        </nav>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

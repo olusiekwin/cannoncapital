@@ -1,11 +1,5 @@
 import { useEffect } from "react";
-import {
-  buildAbsoluteUrl,
-  getBaseUrl,
-  getDocumentTitle,
-  getSeoForPath,
-  SeoConfig,
-} from "@/lib/seo";
+import { buildAbsoluteUrl, getBaseUrl, getDocumentTitle, SeoConfig } from "@/lib/seo";
 
 interface SeoManagerProps {
   config: SeoConfig;
@@ -52,35 +46,11 @@ const setJsonLd = (config: SeoConfig): void => {
 
   const base = getBaseUrl();
   const url = buildAbsoluteUrl(config.path);
-  const pageImage = config.image || buildAbsoluteUrl("/og-image.svg");
-  const orgLogo = buildAbsoluteUrl("/logo.svg");
-  const siteWideDescription = getSeoForPath("/").description;
+  const pageImage = config.image || buildAbsoluteUrl("/og-share.jpg");
 
   const orgId = `${base}/#organization`;
   const websiteId = `${base}/#website`;
   const webPageId = `${url}#webpage`;
-
-  const organization = {
-    "@type": "Organization",
-    "@id": orgId,
-    name: "CannonCapital",
-    url: base,
-    logo: {
-      "@type": "ImageObject",
-      url: orgLogo,
-    },
-    sameAs: [] as string[],
-  };
-
-  const website = {
-    "@type": "WebSite",
-    "@id": websiteId,
-    name: "CannonCapital",
-    url: `${base}/`,
-    description: siteWideDescription,
-    inLanguage: "en-US",
-    publisher: { "@id": orgId },
-  };
 
   const webPage: Record<string, unknown> = {
     "@type": "WebPage",
@@ -92,7 +62,7 @@ const setJsonLd = (config: SeoConfig): void => {
     about: { "@id": orgId },
   };
 
-  const graph: Record<string, unknown>[] = [organization, website, webPage];
+  const graph: Record<string, unknown>[] = [webPage];
 
   if (config.type === "article") {
     const article: Record<string, unknown> = {
@@ -102,14 +72,7 @@ const setJsonLd = (config: SeoConfig): void => {
       image: pageImage,
       url,
       mainEntityOfPage: { "@id": webPageId },
-      publisher: {
-        "@type": "Organization",
-        name: "CannonCapital",
-        logo: {
-          "@type": "ImageObject",
-          url: orgLogo,
-        },
-      },
+      publisher: { "@id": orgId },
     };
     if (config.datePublished) {
       article.datePublished = config.datePublished;
@@ -132,7 +95,7 @@ const setJsonLd = (config: SeoConfig): void => {
 export function SeoManager({ config }: SeoManagerProps) {
   useEffect(() => {
     const absoluteUrl = buildAbsoluteUrl(config.path);
-    const image = config.image || buildAbsoluteUrl("/og-image.svg");
+    const image = config.image || buildAbsoluteUrl("/og-share.jpg");
     const type = config.type || "website";
     const robots = config.robots || "index,follow";
 

@@ -19,7 +19,8 @@ export const truncateForMetaDescription = (text: string, maxLen = 160): string =
 
 const SITE_NAME = "CannonCapital";
 const BASE_URL = "https://cannoncapitalpartners.org";
-const DEFAULT_IMAGE = `${BASE_URL}/og-image.svg`;
+/** Raster image on same domain — Google/social handle JPEG better than SVG for previews. */
+const DEFAULT_IMAGE = `${BASE_URL}/og-share.jpg`;
 
 const defaultConfig: SeoConfig = {
   title: "Strategic Financial Advisory",
