@@ -198,7 +198,7 @@ export const emailTemplates = {
           <tr>
             <td style="background-color: #111111; padding: 45px 50px 40px 50px; text-align: center;">
               <p style="margin: 0 0 12px 0; color: #ffffff; font-size: 14px; font-weight: 600; font-family: 'Sora', 'Inter', Arial, sans-serif;">
-                Canon Capital Partners LLC
+                CannonCapital Partners LLC
               </p>
               <p style="margin: 0 0 25px 0; color: #9f9f9f; font-size: 12px; line-height: 1.6;">
                 Professional Financial Advisory Services
@@ -253,7 +253,7 @@ Best regards,
 The Cannon Capital Partners Team
 
 ---
-Canon Capital Partners LLC
+CannonCapital Partners LLC
 Professional Financial Advisory Services
 
 Address:
@@ -369,7 +369,7 @@ If you did not subscribe to this newsletter, please ignore this email.
           <tr>
             <td style="background-color: #111111; padding: 45px 50px 40px 50px; text-align: center;">
               <p style="margin: 0 0 12px 0; color: #ffffff; font-size: 14px; font-weight: 600; font-family: 'Sora', 'Inter', Arial, sans-serif;">
-                Canon Capital Partners LLC
+                CannonCapital Partners LLC
               </p>
               <p style="margin: 0 0 30px 0; color: #9f9f9f; font-size: 12px; line-height: 1.7;">
                 Professional Financial Advisory Services
@@ -415,7 +415,7 @@ Best regards,
 The Cannon Capital Partners Team
 
 ---
-Canon Capital Partners LLC
+CannonCapital Partners LLC
 Professional Financial Advisory Services
 
 Address:
@@ -548,7 +548,7 @@ Phone: +254 730 112 028 | +254 730 112 027
           <tr>
             <td style="background-color: #111111; padding: 40px 50px; text-align: center;">
               <p style="margin: 0 0 8px 0; color: #ffffff; font-size: 13px; font-weight: 600; font-family: 'Sora', 'Inter', Arial, sans-serif;">
-                Canon Capital Partners LLC
+                CannonCapital Partners LLC
               </p>
               <p style="margin: 0 0 24px 0; color: #9f9f9f; font-size: 11px; line-height: 1.7;">
                 Professional Financial Advisory Services
@@ -589,7 +589,7 @@ ${submission.message ? `\nMessage:\n${submission.message}` : ''}
 Reply to: ${submission.email}
 
 ---
-Canon Capital Partners LLC
+CannonCapital Partners LLC
 Professional Financial Advisory Services
 Delta Corner, Westlands, Nairobi, Kenya
 inquiries@cannoncapitalpartners.org | +254 730 112 028 | +254 730 112 027
@@ -657,7 +657,7 @@ inquiries@cannoncapitalpartners.org | +254 730 112 028 | +254 730 112 027
           <tr>
             <td style="background-color: #111111; padding: 45px 50px 40px 50px; text-align: center;">
               <p style="margin: 0 0 12px 0; color: #ffffff; font-size: 14px; font-weight: 600; font-family: 'Sora', 'Inter', Arial, sans-serif;">
-                Canon Capital Partners LLC
+                CannonCapital Partners LLC
               </p>
               <p style="margin: 0 0 30px 0; color: #9f9f9f; font-size: 12px; line-height: 1.7;">
                 Professional Financial Advisory Services
@@ -694,7 +694,7 @@ ${subject}
 ${content.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')}
 
 ---
-Canon Capital Partners LLC
+CannonCapital Partners LLC
 Professional Financial Advisory Services
 
 Address:
@@ -879,7 +879,7 @@ export const sendOTPEmail = async (email: string, otpCode: string, username: str
           <tr>
             <td style="background-color: #111111; padding: 45px 50px 40px 50px; text-align: center;">
               <p style="margin: 0 0 12px 0; color: #ffffff; font-size: 14px; font-weight: 600; font-family: 'Sora', 'Inter', Arial, sans-serif;">
-                Canon Capital Partners LLC
+                CannonCapital Partners LLC
               </p>
               <p style="margin: 0 0 30px 0; color: #9f9f9f; font-size: 12px; line-height: 1.7;">
                 Professional Financial Advisory Services
@@ -925,7 +925,7 @@ Best regards,
 Cannon Capital Partners Security System
 
 ---
-Canon Capital Partners LLC
+CannonCapital Partners LLC
 Professional Financial Advisory Services
 
 Address:

@@ -81,7 +81,7 @@ export function Header() {
             {/* Left: Business Hours */}
             <div className="flex flex-wrap items-center gap-2 md:gap-3 text-xs justify-center md:justify-start">
               <Clock className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-              <span className="font-medium">Canon Capital Partners LLC:</span>
+              <span className="font-medium">Cannon Capital Partners LLC:</span>
               <span className={isOpen ? "text-primary font-semibold" : "text-gray-400"}>
                 {isOpen ? "Open" : "Closed"}
               </span>
@@ -129,7 +129,7 @@ export function Header() {
           <Link to="/" className="flex items-center flex-shrink-0">
             <img 
               src="/logo.svg" 
-              alt="Canon Capital Partners LLC" 
+              alt="Cannon Capital Partners LLC"
               className="h-28 lg:h-32 w-auto"
             />
           </Link>

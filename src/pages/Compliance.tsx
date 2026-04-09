@@ -14,7 +14,7 @@ const Compliance = () => {
             Compliance & Regulatory Disclosures
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            Canon Capital Partners LLC maintains rigorous compliance standards and operates under 
+            Cannon Capital Partners LLC maintains rigorous compliance standards and operates under
             the oversight of relevant regulatory authorities across all jurisdictions in which we conduct business.
           </p>
         </div>
@@ -79,7 +79,7 @@ const Compliance = () => {
                 Form ADV
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Canon Capital Partners LLC's Form ADV Part 2A (Brochure) and Part 2B (Brochure Supplement) contain 
+                Cannon Capital Partners LLC's Form ADV Part 2A (Brochure) and Part 2B (Brochure Supplement) contain
                 important information about our advisory services, fees, and business practices. 
                 Clients and prospective clients may obtain a copy by contacting us or accessing it 
                 through the SEC's Investment Adviser Public Disclosure website.
@@ -91,7 +91,7 @@ const Compliance = () => {
                 Conflicts of Interest
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Canon Capital Partners LLC maintains comprehensive policies and procedures to identify, disclose, 
+                Cannon Capital Partners LLC maintains comprehensive policies and procedures to identify, disclose,
                 and manage conflicts of interest. Material conflicts are disclosed to clients in our 
                 Form ADV and engagement documentation. We are committed to placing client interests first.
               </p>
@@ -125,7 +125,7 @@ const Compliance = () => {
               </p>
               <div className="space-y-2 text-foreground">
                 <p><strong>Chief Compliance Officer</strong></p>
-                <p>Canon Capital Partners LLC</p>
+                <p>Cannon Capital Partners LLC</p>
                 <p>280 Park Avenue, 38th Floor</p>
                 <p>New York, NY 10017</p>
                 <p className="pt-4">

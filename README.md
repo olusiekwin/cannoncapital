@@ -269,7 +269,7 @@ Configure SMTP settings in backend `.env` file.
 
 ## 📄 License
 
-© 2024 Canon Capital Partners LLC. All rights reserved.
+© 2024 CannonCapital Partners LLC. All rights reserved.
 
 ## 🤝 Support
 

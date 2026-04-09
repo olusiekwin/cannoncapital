@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
                   1. Introduction
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Canon Capital Partners LLC ("Canon Capital Partners LLC," "we," "us," or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you engage with our services or visit our website.
+                  Cannon Capital Partners LLC ("Cannon Capital Partners LLC," "we," "us," or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you engage with our services or visit our website.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   By engaging our services or accessing our website, you consent to the practices described in this Privacy Policy. If you do not agree with the terms of this policy, please do not access our website or engage our services.
@@ -99,7 +99,7 @@ const PrivacyPolicy = () => {
                   7. Contact Us
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  If you have questions about this Privacy Policy or our privacy practices, please contact us at: privacy@cannoncapitalpartners.org or by mail at Canon Capital Partners LLC, 280 Park Avenue, 38th Floor, New York, NY 10017.
+                  If you have questions about this Privacy Policy or our privacy practices, please contact us at: privacy@cannoncapitalpartners.org or by mail at Cannon Capital Partners LLC, 280 Park Avenue, 38th Floor, New York, NY 10017.
                 </p>
               </div>
             </div>

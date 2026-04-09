@@ -265,7 +265,7 @@ const ArticleDetail = () => {
                 </h3>
                 <p className="text-sm text-primary mb-4">{article.authorRole}</p>
                 <p className="text-sm text-muted-foreground">
-                  Canon Capital Partners LLC
+                  Cannon Capital Partners LLC
                 </p>
               </div>
 

@@ -9,7 +9,7 @@ const faqCategories = [
     title: "General Questions",
     questions: [
       {
-        question: "What types of clients does Canon Capital Partners LLC serve?",
+        question: "What types of clients does Cannon Capital Partners LLC serve?",
         answer: "We serve high-net-worth individuals, family offices, corporations, and institutional investors seeking sophisticated financial advisory services. Our typical client relationships involve significant assets and complex financial situations that benefit from institutional-grade advice."
       },
       {
@@ -17,11 +17,11 @@ const faqCategories = [
         answer: "While we evaluate each potential relationship individually, our advisory services are generally most appropriate for clients with $5 million or more in investable assets. For certain specialized services such as project financing, minimum thresholds may differ."
       },
       {
-        question: "How is Canon Capital Partners LLC compensated?",
+        question: "How is Cannon Capital Partners LLC compensated?",
         answer: "Our compensation varies by service. Wealth management services typically involve asset-based fees. Project financing and transaction advisory may involve success-based fees. We provide transparent fee schedules and always disclose our compensation structure before engagement."
       },
       {
-        question: "Is Canon Capital Partners LLC a fiduciary?",
+        question: "Is Cannon Capital Partners LLC a fiduciary?",
         answer: "Yes, we operate as a fiduciary for our investment advisory clients, meaning we are legally obligated to act in their best interests. This fiduciary standard guides all our recommendations and advice."
       }
     ]
@@ -34,7 +34,7 @@ const faqCategories = [
         answer: "Every relationship begins with an introductory conversation to understand your circumstances and objectives. If there's mutual interest, we proceed to a comprehensive discovery process, followed by a proposal outlining our recommended approach and terms."
       },
       {
-        question: "Can I engage Canon Capital Partners LLC for a single service?",
+        question: "Can I engage Cannon Capital Partners LLC for a single service?",
         answer: "Yes, while many clients utilize multiple services, we offer each service area independently. You might engage us solely for project financing advisory, for example, without utilizing wealth management services."
       },
       {
@@ -55,8 +55,8 @@ const faqCategories = [
         answer: "Client confidentiality is paramount. We maintain strict data security protocols, limit access to client information on a need-to-know basis, and never share client information without explicit consent, except as required by law."
       },
       {
-        question: "What regulatory oversight applies to Canon Capital Partners LLC?",
-        answer: "Canon Capital Partners LLC is registered as an investment advisor and subject to applicable securities regulations. We maintain robust compliance programs, undergo regular audits, and adhere to all applicable regulatory requirements."
+        question: "What regulatory oversight applies to Cannon Capital Partners LLC?",
+        answer: "Cannon Capital Partners LLC is registered as an investment advisor and subject to applicable securities regulations. We maintain robust compliance programs, undergo regular audits, and adhere to all applicable regulatory requirements."
       },
       {
         question: "How are conflicts of interest managed?",

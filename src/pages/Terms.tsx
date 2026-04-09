@@ -28,7 +28,7 @@ const Terms = () => {
                   1. Acceptance of Terms
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  By accessing or using the Canon Capital Partners LLC website and services, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, you may not access or use our services.
+                  By accessing or using the Cannon Capital Partners LLC website and services, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, you may not access or use our services.
                 </p>
               </div>
 
@@ -37,7 +37,7 @@ const Terms = () => {
                   2. Description of Services
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Canon Capital Partners LLC provides financial advisory services including asset management, wealth protection, wealth management, project financing, loan structuring, and insurance planning. Specific services are provided pursuant to separate engagement agreements that govern the terms of those relationships.
+                  Cannon Capital Partners LLC provides financial advisory services including asset management, wealth protection, wealth management, project financing, loan structuring, and insurance planning. Specific services are provided pursuant to separate engagement agreements that govern the terms of those relationships.
                 </p>
               </div>
 
@@ -55,7 +55,7 @@ const Terms = () => {
                   4. No Guarantees
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Past performance is not indicative of future results. Investment involves risk, including the possible loss of principal. Canon Capital Partners LLC makes no guarantees regarding the performance of any investment or the success of any advisory engagement.
+                  Past performance is not indicative of future results. Investment involves risk, including the possible loss of principal. Cannon Capital Partners LLC makes no guarantees regarding the performance of any investment or the success of any advisory engagement.
                 </p>
               </div>
 
@@ -64,7 +64,7 @@ const Terms = () => {
                   5. Intellectual Property
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  All content on this website, including text, graphics, logos, and images, is the property of Canon Capital Partners LLC and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written consent.
+                  All content on this website, including text, graphics, logos, and images, is the property of Cannon Capital Partners LLC and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written consent.
                 </p>
               </div>
 
@@ -73,7 +73,7 @@ const Terms = () => {
                   6. Limitation of Liability
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  To the fullest extent permitted by law, Canon Capital Partners LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our website or services.
+                  To the fullest extent permitted by law, Cannon Capital Partners LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our website or services.
                 </p>
               </div>
 
@@ -100,7 +100,7 @@ const Terms = () => {
                   9. Contact Information
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  For questions regarding these Terms and Conditions, please contact us at: legal@cannoncapitalpartners.org or by mail at Canon Capital Partners LLC, 280 Park Avenue, 38th Floor, New York, NY 10017.
+                  For questions regarding these Terms and Conditions, please contact us at: legal@cannoncapitalpartners.org or by mail at Cannon Capital Partners LLC, 280 Park Avenue, 38th Floor, New York, NY 10017.
                 </p>
               </div>
             </div>

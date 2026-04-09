@@ -271,4 +271,4 @@ CORS is configured to allow requests from:
 
 ## 📄 License
 
-© 2024 Canon Capital Partners LLC. All rights reserved.
+© 2024 CannonCapital Partners LLC. All rights reserved.

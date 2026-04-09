@@ -14,7 +14,7 @@ const FraudPrevention = () => {
             Protecting Our Clients from Fraud
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            Canon Capital Partners LLC is committed to protecting our clients and their assets. 
+            Cannon Capital Partners LLC is committed to protecting our clients and their assets.
             We maintain robust security measures and work proactively to prevent fraud and identity theft.
           </p>
         </div>
@@ -31,7 +31,7 @@ const FraudPrevention = () => {
               <AlertTriangle className="w-8 h-8 text-primary mb-4" strokeWidth={1} />
               <h3 className="font-heading text-lg text-foreground mb-3">Unsolicited Contact</h3>
               <p className="text-sm text-muted-foreground">
-                Be cautious of unsolicited calls, emails, or messages claiming to be from Canon Capital Partners LLC 
+                Be cautious of unsolicited calls, emails, or messages claiming to be from Cannon Capital Partners LLC
                 requesting personal or financial information.
               </p>
             </div>
@@ -142,7 +142,7 @@ const FraudPrevention = () => {
                 1. Contact Us Immediately
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                If you receive suspicious communications claiming to be from Canon Capital Partners LLC, 
+                If you receive suspicious communications claiming to be from Cannon Capital Partners LLC,
                 or if you believe your account may have been compromised, contact us immediately using 
                 the verified contact information below.
               </p>
@@ -232,7 +232,7 @@ const FraudPrevention = () => {
                 <div className="bg-muted/30 border border-border p-6">
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     <strong>Important:</strong> Always verify the identity of anyone claiming to represent 
-                    Canon Capital Partners LLC. You can verify our official contact information on this website 
+                    Cannon Capital Partners LLC. You can verify our official contact information on this website
                     or by contacting us through our official channels. When in doubt, hang up and call us directly 
                     using a number you have verified.
                   </p>

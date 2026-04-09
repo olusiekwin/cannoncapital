@@ -70,7 +70,7 @@ export function TestimonialForm() {
       <div>
         <h3 className="font-heading text-2xl text-foreground mb-4">Share Your Experience</h3>
         <p className="text-muted-foreground text-sm mb-6">
-          Help others learn about working with Canon Capital Partners LLC
+          Help others learn about working with Cannon Capital Partners LLC
         </p>
       </div>
 
@@ -146,7 +146,7 @@ export function TestimonialForm() {
           value={formData.content}
           onChange={(e) => setFormData({ ...formData, content: e.target.value })}
           className="w-full px-4 py-2 border border-border focus:outline-none focus:ring-2 focus:ring-primary"
-          placeholder="Share your experience working with Canon Capital Partners LLC..."
+          placeholder="Share your experience working with Cannon Capital Partners LLC..."
         />
       </div>
 

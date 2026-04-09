@@ -54,7 +54,7 @@ const Careers = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
-            alt="Canon Capital Partners LLC office"
+            alt="Cannon Capital Partners LLC office"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
@@ -64,7 +64,7 @@ const Careers = () => {
             Careers
           </span>
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-            Build Your Career at Canon Capital Partners LLC
+            Build Your Career at Cannon Capital Partners LLC
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
             Join a team of exceptional professionals dedicated to delivering 
@@ -85,7 +85,7 @@ const Careers = () => {
                 Excellence Through Collaboration
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                At Canon Capital Partners LLC, we've built a culture that attracts and retains exceptional 
+                At Cannon Capital Partners LLC, we've built a culture that attracts and retains exceptional
                 talent. Our environment combines the intellectual stimulation of complex 
                 problem-solving with the satisfaction of meaningful client impact.
               </p>

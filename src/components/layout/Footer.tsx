@@ -69,7 +69,7 @@ export function Footer() {
               <Link to="/" className="inline-flex items-center mb-5 md:mb-6">
                 <img 
                   src="/logo.svg" 
-                  alt="Canon Capital Partners LLC" 
+                  alt="Cannon Capital Partners LLC"
                   className="h-12 sm:h-14 md:h-16 lg:h-[72px] w-auto max-w-[200px] object-contain object-left"
                   style={{ filter: 'brightness(0) invert(1)' }}
                 />
@@ -199,7 +199,7 @@ export function Footer() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
               {/* Copyright */}
               <p className="text-xs text-gray-400 text-center md:text-left order-2 md:order-1">
-                © {new Date().getFullYear()} Canon Capital Partners LLC. All rights reserved.
+                © {new Date().getFullYear()} Cannon Capital Partners LLC. All rights reserved.
               </p>
 
               {/* Social Media & Legal Links */}

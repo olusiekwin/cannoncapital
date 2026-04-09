@@ -68,7 +68,7 @@ const Contact = () => {
       <AnimatedHero
         label="Contact"
         title="Begin the Conversation"
-        subtitle="We welcome the opportunity to understand your unique circumstances and explore how Canon Capital Partners LLC might serve your objectives."
+        subtitle="We welcome the opportunity to understand your unique circumstances and explore how Cannon Capital Partners LLC might serve your objectives."
         backgroundImage="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2070&auto=format&fit=crop"
       />
 
@@ -247,7 +247,7 @@ const Contact = () => {
                   Headquarters
                 </h3>
                 <address className="not-italic text-muted-foreground leading-relaxed text-sm lg:text-base">
-                  Canon Capital Partners LLC<br />
+                  Cannon Capital Partners LLC<br />
                   Delta Corner<br />
                   Westlands, Nairobi, Kenya
                 </address>

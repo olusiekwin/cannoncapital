@@ -64,7 +64,7 @@ const About = () => {
       <AnimatedHero
         label="About Us"
         title="Built on Trust. Proven by Results."
-        subtitle="Since 1998, Canon Capital Partners LLC has served discerning clients with institutional-grade advisory services, combining analytical rigor with personalized counsel."
+        subtitle="Since 2007, Cannon Capital Partners LLC has served discerning clients with institutional-grade advisory services, combining analytical rigor with personalized counsel."
         backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2070&auto=format&fit=crop"
       />
 
@@ -191,8 +191,8 @@ const About = () => {
               Watch Our Story
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-              Discover how Canon Capital Partners LLC has been transforming the financial landscape 
-              through innovative solutions and trusted partnerships since 1998.
+              Discover how Cannon Capital Partners LLC has been transforming the financial landscape
+              through innovative solutions and trusted partnerships since 2007.
             </p>
             <div className="aspect-video bg-black border border-border overflow-hidden">
               <video
@@ -220,7 +220,7 @@ const About = () => {
                 Serving Clients Worldwide
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                With offices across major financial centers, Canon Capital Partners LLC provides 
+                With offices across major financial centers, Cannon Capital Partners LLC provides
                 seamless advisory services regardless of geographic complexity. 
                 Our global infrastructure enables sophisticated cross-border 
                 solutions while maintaining local market expertise.

@@ -25,7 +25,7 @@ export function AboutPreview() {
 
           <div className="lg:pl-8">
             <span className="text-xs font-body uppercase tracking-[0.3em] text-primary mb-3 sm:mb-4 block">
-              About Canon Capital Partners LLC
+              About Cannon Capital Partners LLC
             </span>
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 sm:mb-6 leading-tight">
               Bridging Opportunity and Capital
